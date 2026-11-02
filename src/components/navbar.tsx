@@ -74,7 +74,7 @@ return (
         className="rounded-xl px-6 font-semibold shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
         render={<Link href="/register" />}
       >
-        Get Started
+       Register
       </Button>
     </div>
 
