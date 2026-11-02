@@ -1,7 +1,7 @@
 import Studiocard from "./Studiocard";
 
 const FeaturedStudios = async () => {
-  const res = await fetch('http://localhost:5000/studios');
+  const res = await fetch('http://localhost:5000/featured-studios');
   const studios = await res.json();
 
   return (
