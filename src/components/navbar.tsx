@@ -64,7 +64,7 @@ return (
         variant="ghost"
         size="lg"
         className="font-semibold text-white hover:bg-gray-800 hover:text-white"
-        render={<Link href="/login" />}
+        render={<Link href="/Login" />}
       >
         Login
       </Button>
@@ -72,7 +72,7 @@ return (
       <Button
         size="lg"
         className="rounded-xl px-6 font-semibold shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-        render={<Link href="/register" />}
+        render={<Link href="/Signup" />}
       >
        Register
       </Button>
