@@ -2,7 +2,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
-
+import DeleteStudioButton from "@/components/DeleteStudioButton";
 interface Studio {
   _id: string;
   title: string;
@@ -108,9 +108,7 @@ export default async function MyListingsPage() {
   </button>
      </Link>
 
-  <button className="flex-1 rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700">
-    Delete
-  </button>
+ <DeleteStudioButton id={studio._id} />
 </div>
 
                 </div>
