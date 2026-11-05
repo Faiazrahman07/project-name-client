@@ -83,6 +83,7 @@ try {
     "http://localhost:5000/add-studio",
     {
       method: "POST",
+         credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
