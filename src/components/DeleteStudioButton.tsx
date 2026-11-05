@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
 export default function DeleteStudioButton({ id }: { id: string }) {
   const router = useRouter();
@@ -13,17 +13,26 @@ export default function DeleteStudioButton({ id }: { id: string }) {
 };
 
   const handleDelete = async () => {
+  try {
     const res = await fetch(`http://localhost:5000/studios/${id}`, {
       method: "DELETE",
+      credentials: "include",
     });
 
-    if (res.ok) {
-      toast.success("Studio deleted successfully");
-      router.refresh();
-    } else {
-      toast.error("Failed to delete studio");
+    if (!res.ok) {
+      throw new Error("Failed to delete studio");
     }
-  };
+
+    toast.success("Studio deleted successfully!");
+    router.refresh();
+
+  } catch (error) {
+    toast.error(
+      error instanceof Error ? error.message : "Something went wrong!"
+    );
+  }
+};
+
 
   return <button onClick={confirmDelete }>Delete</button>;
 }

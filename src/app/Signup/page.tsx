@@ -75,12 +75,18 @@ try {
 }
 
 const handleGoogleSignup = async () => {
-const data = await signIn.social({
-    provider: "google",
-  });
-  
-}
+  try {
+    const { error } = await signIn.social({
+      provider: "google",
+    });
 
+    if (error) {
+      toast.error(error.message || "Google signup failed!");
+    }
+  } catch {
+    toast.error("Something went wrong. Please try again.");
+  }
+};
 return ( <div className="flex flex-col gap-6 max-w-6xl mx-auto my-10"> <Card> <CardHeader className="text-center"> <CardTitle className="text-2xl font-bold">
 Create an account </CardTitle> </CardHeader>
 

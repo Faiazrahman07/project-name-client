@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
 interface BookingCardProps {
   studio: {

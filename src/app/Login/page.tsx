@@ -19,9 +19,10 @@ import Link from "next/link"
 import { signIn } from "../../lib/auth-client"
 
 import toast from "react-hot-toast"
-import { redirect } from "next/dist/server/api-utils"
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
 
 
 
@@ -47,7 +48,7 @@ try {
 
   if (data) {
     toast.success("Login successful!")
-       redirect("/");
+       router.push("/");
   }
 
 } catch {
@@ -56,11 +57,18 @@ try {
 }
 
 const handleGooglelogin = async () => {
-const data = await signIn.social({
-    provider: "google",
-  });
-  
-}
+  try {
+    const { error } = await signIn.social({
+      provider: "google",
+    });
+
+    if (error) {
+      toast.error(error.message || "Google login failed!");
+    }
+  } catch {
+    toast.error("Something went wrong. Please try again.");
+  }
+};
 
 return ( 
 <div className="flex flex-col gap-6 max-w-6xl mx-auto my-10"> <Card> <CardHeader className="text-center"> <CardTitle className="text-2xl font-bold">
