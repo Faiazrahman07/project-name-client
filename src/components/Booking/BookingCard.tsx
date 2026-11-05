@@ -5,7 +5,7 @@ import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-
+import { API_URL } from "@/lib/api";
 interface BookingCardProps {
   studio: {
     _id: string;
@@ -55,7 +55,7 @@ const BookingCard = ({ studio }: BookingCardProps) => {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:5000/bookings", {
+      const res = await fetch(`${API_URL}/bookings`, {
         method: "POST",
         credentials: "include",
         headers: {

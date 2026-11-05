@@ -1,20 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { API_URL } from "@/lib/api";
+type Category = {
+  _id: string;
+  name: string;
+  image: string;
+  description: string;
+};
 
 const CategoryCard = async () => {
-
-  const res = await fetch("http://localhost:5000/category");
+  const res = await fetch(`${API_URL}/category`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch categories");
   }
 
-  const categories = await res.json();
+  const categories: Category[] = await res.json();
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
-
       <div className="mb-10 text-center">
         <h2 className="text-3xl font-bold text-gray-900">
           Browse by Studio Category
@@ -22,7 +26,6 @@ const CategoryCard = async () => {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-
         {categories.map((item) => (
           <Link
             key={item._id}
@@ -31,7 +34,7 @@ const CategoryCard = async () => {
           >
             <Image
               src={item.image}
-              alt={item.category}
+              alt={item.name}
               fill
               sizes="(max-width: 768px) 100vw, 20vw"
               className="object-cover transition duration-500 group-hover:scale-110"
@@ -40,9 +43,7 @@ const CategoryCard = async () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
 
             <div className="absolute bottom-0 p-5 text-white">
-              <h3 className="text-xl font-bold">
-                {item.name}
-              </h3>
+              <h3 className="text-xl font-bold">{item.name}</h3>
 
               <p className="mt-1 text-sm text-gray-200">
                 {item.description}
@@ -50,7 +51,6 @@ const CategoryCard = async () => {
             </div>
           </Link>
         ))}
-
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { API_URL } from "@/lib/api";
 interface Studio {
 _id: string;
 title: string;
@@ -22,7 +22,7 @@ const params = await searchParams;
 const category = params.category;
 
 const res = await fetch(
-`http://localhost:5000/studios${
+`${API_URL}/studios${
       category ? `?category=${encodeURIComponent(category)}` : ""
     }`,
 {

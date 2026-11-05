@@ -1,5 +1,5 @@
 "use client";
-
+import { API_URL } from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
@@ -80,7 +80,7 @@ const studioData = {
 
 try {
   const response = await fetch(
-    "http://localhost:5000/add-studio",
+    "`${API_URL}/add-studio`",
     {
       method: "POST",
          credentials: "include",

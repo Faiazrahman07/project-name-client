@@ -1,5 +1,5 @@
 import EditStudioPage from "@/components/EditStudio";
-
+import { API_URL } from "@/lib/api";
 const Page = async ({
   params,
 }: {
@@ -8,7 +8,7 @@ const Page = async ({
   const { id } = await params;
 
   const res = await fetch(
-    `http://localhost:5000/studios/${id}`,
+    `${API_URL}/studios/${id}`,
     { cache: "no-store" }
   );
 

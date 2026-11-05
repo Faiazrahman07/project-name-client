@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
-
+import { API_URL } from "@/lib/api";
 interface Booking {
 _id: string;
 studioId: string;
@@ -31,7 +31,7 @@ if (!user?.email) return;
 const fetchBookings = async () => {
   try {
     const res = await fetch(
-      `http://localhost:5000/my-bookings?email=${encodeURIComponent(user.email)}`
+      `${API_URL}/my-bookings?email=${encodeURIComponent(user.email)}`
     );
 
     const data = await res.json();
@@ -57,7 +57,7 @@ return <div className="py-20 text-center">Please login first.</div>;
 }
 const handleCancel = async (id: string) => {
   const res = await fetch(
-    `http://localhost:5000/bookings/${id}/cancel`,
+    `${API_URL}/bookings/${id}/cancel`,
     {
       method: "PATCH"
     }

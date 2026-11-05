@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import toast from "react-hot-toast";
-
+import { API_URL } from "@/lib/api";
 const categories = [
 "Photo Studio",
 "Film Stage",
@@ -94,7 +94,7 @@ const studioData = {
 
 try {
   const response = await fetch(
-    `http://localhost:5000/studios/${data._id}`,
+    `${API_URL}/studios/${data._id}`,
     {
       method: "PATCH",
       headers: {

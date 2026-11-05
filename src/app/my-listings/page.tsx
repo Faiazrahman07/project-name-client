@@ -2,6 +2,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import DeleteStudioButton from "@/components/DeleteStudioButton";
 interface Studio {
   _id: string;
@@ -29,12 +30,12 @@ export default async function MyListingsPage() {
     );
   }
 
-  const response = await fetch(
-    `http://localhost:5000/my-listings?email=${encodeURIComponent(
-      session.user.email
-    )}`,
-    { cache: "no-store" }
-  );
+ const response = await fetch(
+  `${API_URL}/my-listings?email=${encodeURIComponent(
+    session.user.email
+  )}`,
+  { cache: "no-store" }
+);
 
   if (!response.ok) {
     throw new Error("Failed to fetch studio listings");

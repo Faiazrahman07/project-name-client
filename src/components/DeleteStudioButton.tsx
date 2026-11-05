@@ -1,5 +1,5 @@
 "use client";
-
+import { API_URL } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -14,7 +14,7 @@ export default function DeleteStudioButton({ id }: { id: string }) {
 
   const handleDelete = async () => {
   try {
-    const res = await fetch(`http://localhost:5000/studios/${id}`, {
+    const res = await fetch(`${API_URL}/studios/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

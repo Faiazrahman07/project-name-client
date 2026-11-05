@@ -1,6 +1,6 @@
 import GalleryCarousel from "@/components/GalleryCarousel";
 import BookingCard from "@/components/Booking/BookingCard";
-
+import { API_URL } from "@/lib/api";
 interface Studio {
   _id: string;
   title: string;
@@ -27,7 +27,7 @@ interface ParamsProps {
 const DetailsPage = async ({ params }: ParamsProps) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/studios/${id}`, {
+  const res = await fetch(`${API_URL}/studios/${id}`, {
     cache: "no-store",
   });
 
