@@ -13,8 +13,7 @@ const db = client.db("StudioSpace");
 export const auth = betterAuth({
     trustedOrigins: [
     "https://project-name-client-vy55.vercel.app",
-    "https://project-name-client-vy55-6016zd0i2-fit-check2.vercel.app",
-    "https://project-name-client-vy55-git-main-fit-check2.vercel.app",
+    "https://project-name-client-vy55-*-fit-check2.vercel.app",
   ],
   emailAndPassword: {
     enabled: true,
