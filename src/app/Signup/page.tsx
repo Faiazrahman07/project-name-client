@@ -78,10 +78,11 @@ const handleGoogleSignup = async () => {
   try {
     const { error } = await signIn.social({
       provider: "google",
+      callbackURL: "https://project-name-client-vy55.vercel.app",
     });
 
     if (error) {
-      toast.error(error.message || "Google signup failed!");
+      toast.error(error.message || "Google login failed!");
     }
   } catch {
     toast.error("Something went wrong. Please try again.");
