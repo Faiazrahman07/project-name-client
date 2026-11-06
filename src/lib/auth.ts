@@ -11,10 +11,12 @@ const client = new MongoClient(
 const db = client.db("StudioSpace");
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL,
+  secret: process.env.BETTER_AUTH_SECRET,
+
   trustedOrigins: [
-  "https://project-name-client-vy55.vercel.app",
-  "https://project-name-client-vy55-*-fit-check2.vercel.app",
-],
+    "https://project-name-client-vy55.vercel.app",
+  ],
 
   emailAndPassword: {
     enabled: true,
@@ -22,8 +24,8 @@ export const auth = betterAuth({
 
   socialProviders: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
 
@@ -35,9 +37,7 @@ export const auth = betterAuth({
     },
   },
 
-  database: mongodbAdapter(db, {
-    client,
-  }),
+  database: mongodbAdapter(db, { client }),
 
   plugins: [
     jwt({
