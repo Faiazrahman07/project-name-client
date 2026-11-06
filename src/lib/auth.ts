@@ -11,10 +11,11 @@ const client = new MongoClient(
 const db = client.db("StudioSpace");
 
 export const auth = betterAuth({
-    trustedOrigins: [
+  trustedOrigins: [
     "https://project-name-client-vy55.vercel.app",
-    "https://project-name-client-vy55-*-fit-check2.vercel.app",
+    "https://project-name-client-vy55-dg0ofl2zq-fit-check2.vercel.app",
   ],
+
   emailAndPassword: {
     enabled: true,
   },
@@ -30,7 +31,7 @@ export const auth = betterAuth({
     accountLinking: {
       enabled: true,
       trustedProviders: ["google"],
-          requireLocalEmailVerified: false
+      requireLocalEmailVerified: false,
     },
   },
 
@@ -47,7 +48,7 @@ export const auth = betterAuth({
   session: {
     cookieCache: {
       enabled: true,
-      maxAge: 7 *24 * 60 * 60,
+      maxAge: 7 * 24 * 60 * 60,
       strategy: "jwt",
     },
   },
